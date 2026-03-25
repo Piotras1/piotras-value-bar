@@ -286,3 +286,5 @@ When a value crosses a threshold the corresponding arrow appears and animates.
 | `alarm_max` | number | — | Upper alarm threshold. Arrow indicator appears when value exceeds this |
 | `tap_action` | object | `more-info` | Action on tap: `{action: "more-info"}` or `{action: "none"}` |
 
+---
+*Created by Piotras. Strictly engineered for reliability.*
