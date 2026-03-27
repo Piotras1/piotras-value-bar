@@ -1,4 +1,5 @@
 ## Piotras Value Bar
+### Release v1.1.1
 
 A highly customizable Home Assistant card for displaying sensor values as animated bars with color gradients, scale labels, and alarm indicators.  
 Designed with a modern UI, smooth scaling, and a built-in visual editor.
@@ -201,7 +202,7 @@ When a value crosses a threshold the corresponding arrow appears and animates.
 4. Go to **Settings → Dashboards → Resources**.
 5. Click **Add Resource** and enter:
 ```
-/local/piotras-value-bar/piotras-value-bar-loader.js?v=1.1.0
+/local/piotras-value-bar/piotras-value-bar-loader.js?v=1.1.1
 ```
 - Resource type: **JavaScript Module**
 6. Hard reload your browser (`Ctrl+Shift+R`).
