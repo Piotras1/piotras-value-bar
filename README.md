@@ -1,5 +1,5 @@
-## Piotras Value Bar
-### Release v1.1.1
+# Piotras Value Bar
+### Release v1.2.0
 
 A highly customizable Home Assistant card for displaying sensor values as animated bars with color gradients, scale labels, and alarm indicators.  
 Designed with a modern UI, smooth scaling, and a built-in visual editor.
@@ -11,6 +11,7 @@ Supports 3 bar orientations and 3 name/value layout modes — from compact singl
 - 3 name/value placement modes per orientation
 - Fully scalable UI — adapts to any card width automatically
 - Per-device color palette with up to 13 colors
+- Dynamic `max` — accepts a fixed number or a live HA entity
 - Alarm indicators with animated arrows
 - Scale labels with configurable density
 - Built-in visual editor support
@@ -118,10 +119,9 @@ Layout 3 renders all devices as vertical bars side by side, sharing a common bas
 A scale column on the left shows reference values with horizontal dashed grid lines extending across all bars.  
 Bars fill from the bottom up — perfect for comparing multiple sensors at a glance.
 
-Horizontal Scroll Navigation
-When the number of devices exceeds the visible card width, Layout 3 supports horizontal scrolling. The scroll container wraps all rows (bars, values, names) so they move together as a single unit.
-How it works
-The scale column on the left is fixed outside the scroll container and always visible. All other content (bars + value row + name rows) sits inside a single overflow-x: auto div with width: max-content, ensuring every row is exactly as wide as the bars row — no row lags behind during scroll.
+**Horizontal Scroll Navigation**  
+When the number of devices exceeds the visible card width, Layout 3 supports horizontal scrolling. The scroll container wraps all rows (bars, values, names) so they move together as a single unit.  
+The scale column on the left is fixed outside the scroll container and always visible. All other content sits inside a single `overflow-x: auto` div with `width: max-content`.
 
 ### card_layout options
 
@@ -180,6 +180,206 @@ When a value crosses a threshold the corresponding arrow appears and animates.
 
 ---
 
+## ⚡ Dynamic `max` — Entity as Scale Reference
+
+![Zrzut ekranu (1265)](https://github.com/user-attachments/assets/1b042909-d8a8-4c0b-b7e5-a2ec1e9954e6)
+ 
+The `max` field in each device accepts either a fixed number or a live Home Assistant entity ID.  
+When an entity ID is provided, its current state is read as the upper bound of the bar — updating automatically whenever the entity changes.
+
+### How it works
+
+- **`show_indicator: true`** — The bar displays the full gradient at all times. The white pin marker moves proportionally between `min` and the current `max` value. When `max` comes from an entity, the pin always reflects the real ratio.
+- **`show_indicator: false`** — The bar fills from left/bottom up to the current value relative to the dynamic `max`. If the value equals `max`, the bar is full.
+
+### Syntax
+
+```yaml
+devices:
+  # Fixed number — classic usage
+  - entity: sensor.battery_level
+    name: "Battery"
+    min: 0
+    max: 100
+    unit: "%"
+
+  # Entity ID — dynamic max read from HA state
+  - entity: sensor.power_office
+    name: "Office PC"
+    min: 0
+    max: sensor.power_total   # reads state of this entity as max
+    unit: "W"
+```
+
+### When to use dynamic max
+
+| Use case | `max` value | Effect |
+|---|---|---|
+| Fixed range (battery, %) | `100` | Classic bar, stable scale |
+| Proportion of total power | `sensor.power_total` | Each device shows its share of total consumption |
+| Daily energy vs yesterday | `sensor.energy_yesterday` | Bar fills relative to previous day |
+| Monthly budget | `sensor.energy_budget_month` | Visual progress toward a set limit |
+
+> ⚠️ If the entity does not exist or its state is not a valid number, `max` falls back to `100`.
+
+---
+
+## ⚡ Energy Monitoring — Watts, Amps & kWh
+
+![Zrzut ekranu (1257)](https://github.com/user-attachments/assets/5cf01aa8-5bce-4498-a883-41a28216f59b)
+
+Piotras Value Bar works exceptionally well as an energy monitoring dashboard. The combination of dynamic `max`, color gradients, and the `show_indicator` pin gives immediate visual feedback on power consumption without any extra helper sensors.
+
+### Watts (W) — Real-time power
+
+Use layout 1 or 2 with `show_indicator: true` and set `max` to the total consumption entity. Each device bar shows its proportion of the current load — the pin position tells you at a glance whether a device is running light or heavy.
+
+> 📸 *[screenshot placeholder]*
+
+```yaml
+type: custom:piotras-value-bar
+header: "POWER — REAL TIME"
+layout: 2
+card_layout: 1
+bar_height: 14
+show_indicator: true
+show_label: true
+label_font_size: 9
+devices:
+  - entity: sensor.power_total
+    name: "Total"
+    min: 0
+    max: 5500
+    unit: "W"
+    colors: "1,2,3,4,5,5"
+  - entity: sensor.power_office
+    name: "Office PC"
+    min: 0
+    max: sensor.power_total
+    unit: "W"
+    colors: "1,2,3,4,5,5"
+  - entity: sensor.power_tv
+    name: "TV"
+    min: 0
+    max: sensor.power_total
+    unit: "W"
+    colors: "1,2,3,4,5,5"
+  - entity: sensor.power_fridge
+    name: "Fridge"
+    min: 0
+    max: sensor.power_total
+    unit: "W"
+    colors: "1,2,3,4,5,5"
+```
+
+**Tips:**
+- Set `max` on individual devices to `sensor.power_total` — bars are proportional, easy to compare
+- Use a green→red gradient (`1,2,3,4,5,5`) so high consumers stand out immediately
+- Add `alarm_max` per device to flag when a device exceeds its normal draw
+
+---
+
+### Amps (A) — Current draw
+
+Works identically to watts. Useful if your smart plugs or energy meter expose current in amps rather than watts. Set `min: 0` and `max` to either a fixed value (e.g. circuit breaker limit) or a total current sensor.
+
+```yaml
+type: custom:piotras-value-bar
+header: "CURRENT DRAW"
+layout: 1
+card_layout: 1
+bar_height: 12
+show_indicator: true
+devices:
+  - entity: sensor.current_total
+    name: "Total"
+    min: 0
+    max: 16
+    unit: "A"
+    colors: "1,2,3,4,5,5"
+    alarm_max: 14
+  - entity: sensor.current_office
+    name: "Office"
+    min: 0
+    max: sensor.current_total
+    unit: "A"
+    colors: "1,2,3,4,5,5"
+  - entity: sensor.current_boiler
+    name: "Boiler"
+    min: 0
+    max: sensor.current_total
+    unit: "A"
+    colors: "1,2,3,4,5,5"
+```
+
+**Tips:**
+- Set a fixed `max` equal to the circuit breaker rating (e.g. `16` A) to see how close you are to the limit
+- Use `alarm_max` slightly below the breaker limit as an early warning
+
+---
+
+### kWh — Daily & Monthly Energy
+
+![Zrzut ekranu (1258)](https://github.com/user-attachments/assets/532accac-4a79-46ad-9149-2a1a4d230b10)
+
+Energy counters (kWh) work best with **resetting counters** — daily or monthly. These are naturally bounded: they start at 0 at reset and grow throughout the period. Setting `max` to the previous period's value (yesterday / last month) gives immediate context — the pin shows whether today is ahead or behind the usual pace.
+
+> 📸 *[screenshot placeholder]*
+
+```yaml
+type: custom:piotras-value-bar
+header: "ENERGY — TODAY vs YESTERDAY"
+layout: 2
+card_layout: 1
+bar_height: 14
+show_indicator: true
+show_label: true
+label_font_size: 9
+devices:
+  - entity: sensor.energy_total_today
+    name: "Total"
+    min: 0
+    max: sensor.energy_total_yesterday
+    unit: "kWh"
+    precision: 2
+    colors: "1,2,3,4,5,5"
+  - entity: sensor.energy_office_today
+    name: "Office PC"
+    min: 0
+    max: sensor.energy_office_yesterday
+    unit: "kWh"
+    precision: 2
+    colors: "1,2,3,4,5,5"
+  - entity: sensor.energy_fridge_today
+    name: "Fridge"
+    min: 0
+    max: sensor.energy_fridge_yesterday
+    unit: "kWh"
+    precision: 2
+    colors: "1,2,3,4,5,5"
+```
+
+**Monthly budget example** — set `max` to a fixed budget or a monthly target entity:
+
+```yaml
+  - entity: sensor.energy_total_this_month
+    name: "This month"
+    min: 0
+    max: 300          # fixed monthly budget in kWh
+    unit: "kWh"
+    precision: 1
+    colors: "1,2,3,4,5,5"
+    alarm_max: 270    # warn at 90% of budget
+```
+
+**Tips for kWh cards:**
+- Use `precision: 2` for small per-device values, `precision: 1` for totals
+- Daily counters reset at midnight — `show_indicator: true` makes the empty bar at midnight look clean (full gradient visible, pin at zero)
+- `show_indicator: false` is better for monthly view — you see how much of the bar is filled over time
+- Combine layout 3 (vertical bars) for a side-by-side comparison of all devices at a glance
+
+---
+
 ## ⚙️ Installation
 
 ### Method 1: Via HACS (Recommended)
@@ -202,7 +402,7 @@ When a value crosses a threshold the corresponding arrow appears and animates.
 4. Go to **Settings → Dashboards → Resources**.
 5. Click **Add Resource** and enter:
 ```
-/local/piotras-value-bar/piotras-value-bar-loader.js?v=1.1.1
+/local/piotras-value-bar/piotras-value-bar-loader.js?v=1.2.0
 ```
 - Resource type: **JavaScript Module**
 6. Hard reload your browser (`Ctrl+Shift+R`).
@@ -279,7 +479,7 @@ When a value crosses a threshold the corresponding arrow appears and animates.
 | `entity` | string | — | Home Assistant entity ID (e.g. `sensor.battery_level`) |
 | `name` | string | entity ID | Display name shown on the card |
 | `min` | number | `0` | Minimum value — maps to the left/bottom of the bar |
-| `max` | number | `100` | Maximum value — maps to the right/top of the bar |
+| `max` | number or entity | `100` | Maximum value — maps to the right/top of the bar. Accepts a fixed number (e.g. `100`) or a HA entity ID (e.g. `sensor.power_total`) whose current state is used as the upper bound |
 | `unit` | string | `""` | Unit of measurement displayed next to the value |
 | `precision` | number | `0` | Number of decimal places for the displayed value |
 | `colors` | string | `"1,2,3,4,5,6"` | Comma-separated palette indices mapped left→right across the bar. Repeat an index to widen a zone (e.g. `"1,2,3,4,5,5"`) |
