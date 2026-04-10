@@ -11,7 +11,7 @@
  *   - ES module and classic script loading
  */
 
-const VERSION = '1.1.1';
+const VERSION = '1.2.0';
 const COMPONENT = 'piotras-value-bar';
 
 // ── Base path detection ───────────────────────────────────────────────────────
