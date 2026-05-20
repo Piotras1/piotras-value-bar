@@ -7,8 +7,10 @@
 
 [![GitHub Discussions](https://img.shields.io/badge/Discussions-Join%20the%20community-blueviolet?style=flat-square&logo=github)](https://github.com/Piotras1/piotras-value-bar/discussions)
 ![GitHub Discussions](https://img.shields.io/github/discussions/Piotras1/piotras-value-bar?style=flat-square&logo=github&label=discussions&color=blueviolet)
+
+[![Kiosk](https://img.shields.io/badge/My%20Kiosk-View%20All%20Cards-orange?style=flat-square&logo=github)](https://github.com/Piotras1/piotras-cards-pack)
 # Piotras Value Bar
-### Release v1.2.0
+### Release v1.2.1
 
 A highly customizable Home Assistant card for displaying sensor values as animated bars with color gradients, scale labels, and alarm indicators.  
 Designed with a modern UI, smooth scaling, and a built-in visual editor.
@@ -391,17 +393,21 @@ devices:
 
 ## ⚙️ Installation
 
-### Method 1: Via HACS (Recommended)
+### Method 1: Via HACS Store (Recommended)
+1. Open HACS in Home Assistant
+2. Search for **"Piotras Value Bar"** in the store
+3. Click **Download**
+4. Hard reload your browser (`Ctrl+Shift+R`)
 
-1. Click the button below to automatically add the repository to your HACS:
+### Method 2: Via HACS Link
+1. Click the button below:
 
 <a href="https://my.home-assistant.io/redirect/hacs_repository/?owner=Piotras1&repository=piotras-value-bar&category=plugin">
     <img src="https://my.home-assistant.io/badges/hacs_repository.svg" alt="Open your Home Assistant instance">
 </a>
 
-2. Click **Add** in the pop-up window.
-3. Once the repository page opens, click **Download**.
-4. After downloading, do a **Hard reload** of your browser.
+2. Click **Add** → **Download**
+3. Hard reload your browser
 
 ### Method 2: Manual Installation
 
@@ -411,7 +417,7 @@ devices:
 4. Go to **Settings → Dashboards → Resources**.
 5. Click **Add Resource** and enter:
 ```
-/local/piotras-value-bar/piotras-value-bar-loader.js?v=1.2.0
+/local/piotras-value-bar/piotras-value-bar-loader.js?v=1.2.1
 ```
 - Resource type: **JavaScript Module**
 6. Hard reload your browser (`Ctrl+Shift+R`).
