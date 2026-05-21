@@ -409,7 +409,7 @@ devices:
 2. Click **Add** → **Download**
 3. Hard reload your browser
 
-### Method 2: Manual Installation
+### Method 3: Manual Installation
 
 1. Download this repository as a ZIP file and extract it.
 2. Inside your Home Assistant `config/www/` directory, create a new folder named `piotras-value-bar`.
