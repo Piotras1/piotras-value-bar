@@ -10,7 +10,7 @@
 
 [![Kiosk](https://img.shields.io/badge/My%20Kiosk-View%20All%20Cards-orange?style=flat-square&logo=github)](https://github.com/Piotras1/piotras-cards-pack)
 # Piotras Value Bar
-### Release v1.2.1
+### Release v1.2.2
 
 A highly customizable Home Assistant card for displaying sensor values as animated bars with color gradients, scale labels, and alarm indicators.  
 Designed with a modern UI, smooth scaling, and a built-in visual editor.
@@ -417,7 +417,7 @@ devices:
 4. Go to **Settings → Dashboards → Resources**.
 5. Click **Add Resource** and enter:
 ```
-/local/piotras-value-bar/piotras-value-bar-loader.js?v=1.2.1
+/local/piotras-value-bar/piotras-value-bar-loader.js?v=1.2.2
 ```
 - Resource type: **JavaScript Module**
 6. Hard reload your browser (`Ctrl+Shift+R`).
@@ -438,11 +438,14 @@ devices:
 | `show_values` | boolean | `true` | all | Show sensor values |
 | `show_indicator` | boolean | `true` | all | `true` = full gradient + pin marker, `false` = progress fill mode |
 | `show_shadow` | boolean | `false` | all | Show inner shadow on bars |
+| `show_line` | boolean | `true` | 3 | Show the dashed connector line between each bar and its label |
+| `show_value_special` | boolean | `true` | 3 | Stagger device labels across two lines in an alternating pattern to prevent overlap on narrow bars. Set false to keep all labels on a single line |
 | `show_label` | boolean | `true` | all | Show scale labels below bars (L1/L2) or on left scale column (L3) |
 | `alarm_on` | boolean | `false` | all | Enable alarm arrow indicators |
 | `bar_height` | number | `12` | all | Bar thickness (px). In L3 this is the bar width |
 | `height_bar` | number | `150` | 3 | Vertical bar height (px) |
 | `bars_3_gap` | number | `15` | 3 | Gap between vertical bars (px) |
+| `border_bar` | number | `full capsule` | 3 | Corner radius of vertical bars (px). Omit for full capsule (default). 0 = square corners |
 | `spacing` | number | `8` | 1, 2 | Gap between device rows (px) |
 | `name_width` | number | `110` | 1, 2 (CL1) | Fixed width of the name column (px) |
 | `value_width` | number | `70` | 1, 2 (CL1) | Fixed width of the value column (px) |
