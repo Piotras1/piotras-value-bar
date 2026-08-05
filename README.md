@@ -10,7 +10,7 @@
 
 [![Kiosk](https://img.shields.io/badge/My%20Kiosk-View%20All%20Cards-orange?style=flat-square&logo=github)](https://github.com/Piotras1/piotras-cards-pack)
 # Piotras Value Bar
-### Release v1.2.2
+### Release v1.2.3
 
 A highly customizable Home Assistant card for displaying sensor values as animated bars with color gradients, scale labels, and alarm indicators.  
 Designed with a modern UI, smooth scaling, and a built-in visual editor.
@@ -427,7 +427,7 @@ devices:
 4. Go to **Settings → Dashboards → Resources**.
 5. Click **Add Resource** and enter:
 ```
-/local/piotras-value-bar/piotras-value-bar-loader.js?v=1.2.2
+/local/piotras-value-bar/piotras-value-bar-loader.js?v=1.2.3
 ```
 - Resource type: **JavaScript Module**
 6. Hard reload your browser (`Ctrl+Shift+R`).
@@ -511,8 +511,8 @@ devices:
 | `unit` | string | `""` | Unit of measurement displayed next to the value |
 | `precision` | number | `0` | Number of decimal places for the displayed value |
 | `colors` | string | `"1,2,3,4,5,6"` | Comma-separated palette indices mapped left→right across the bar. Repeat an index to widen a zone (e.g. `"1,2,3,4,5,5"`) |
-| `alarm_min` | number | — | Lower alarm threshold. Arrow indicator appears when value drops below this |
-| `alarm_max` | number | — | Upper alarm threshold. Arrow indicator appears when value exceeds this |
+| `alarm_min` | number or entity | — | Lower alarm threshold. Arrow indicator appears when value drops below this. Accepts a fixed number or a HA entity ID whose current state is used as the threshold |
+| `alarm_max` | number or entity | — | Upper alarm threshold. Arrow indicator appears when value exceeds this. Accepts a fixed number or a HA entity ID whose current state is used as the threshold |
 | `tap_action` | object | `more-info` | Action on tap: `{action: "more-info"}` or `{action: "none"}` |
 
 ---
