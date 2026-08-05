@@ -189,6 +189,16 @@ devices:
 Enable alarms with `alarm_on: true` at card level, then set `alarm_min` and/or `alarm_max` per device.  
 When a value crosses a threshold the corresponding arrow appears and animates.
 
+alarm_min and alarm_max accept either a fixed number or an entity_id. When an entity is used, the threshold is read live from that entity's state — handy for schedules, seasonal limits, or user-adjustable thresholds via input_number.
+
+```yaml
+alarm_on: true
+devices:
+  - entity: sensor.outdoor_temperature
+    alarm_min: 0
+    alarm_max: input_number.max_temperature_threshold
+```
+
 ---
 
 ## ⚡ Dynamic `max` — Entity as Scale Reference
