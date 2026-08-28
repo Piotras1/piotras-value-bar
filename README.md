@@ -12,6 +12,8 @@
 # Piotras Value Bar
 ### Release v1.2.3
 
+<img width="1200" height="799" alt="piotras-value-bar" src="https://github.com/user-attachments/assets/5acbe05d-df33-41bb-bdb2-bf1368efcdad" />
+
 A highly customizable Home Assistant card for displaying sensor values as animated bars with color gradients, scale labels, and alarm indicators.  
 Designed with a modern UI, smooth scaling, and a built-in visual editor.
 
