@@ -10,7 +10,7 @@
 
 [![Kiosk](https://img.shields.io/badge/My%20Kiosk-View%20All%20Cards-orange?style=flat-square&logo=github)](https://github.com/Piotras1/piotras-cards-pack)
 # Piotras Value Bar
-### Release v1.2.3
+### Release v1.2.4
 
 <img src="https://raw.githubusercontent.com/Piotras1/piotras-value-bar/refs/heads/main/img/piotras-value-bar.jpg" alt="Piotras Value Bar - Preview">
 
@@ -60,7 +60,7 @@ Supports 3 bar orientations and 3 name/value layout modes — from compact singl
 4. Go to **Settings → Dashboards → Resources**.
 5. Click **Add Resource** and enter:
 ```
-/local/piotras-value-bar/piotras-value-bar-loader.js?v=1.2.3
+/local/piotras-value-bar/piotras-value-bar-loader.js?v=1.2.4
 ```
 - Resource type: **JavaScript Module**
 6. Hard reload your browser (`Ctrl+Shift+R`).
