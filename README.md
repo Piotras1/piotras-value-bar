@@ -1,4 +1,4 @@
-![HACS](https://img.shields.io/badge/HACS-Default-orange?style=flat-square)
+![HACS Default](https://img.shields.io/badge/HACS-Default-orange?style=flat-square&logo=homeassistant)
 [![HACS Downloads](https://img.shields.io/github/downloads/Piotras1/piotras-value-bar/total?style=flat-square&logo=homeassistant&color=41BDF5&label=downloads)](https://github.com/Piotras1/piotras-value-bar/releases)
 [![GitHub Stars](https://img.shields.io/github/stars/Piotras1/piotras-value-bar?style=flat-square&logo=github&label=stars&color=brightgreen)](https://github.com/Piotras1/piotras-value-bar/stargazers)
 [![GitHub Issues](https://img.shields.io/github/issues/Piotras1/piotras-value-bar?style=flat-square&logo=github&label=issues)](https://github.com/Piotras1/piotras-value-bar/issues)
