@@ -1,12 +1,12 @@
-![HACS](https://img.shields.io/badge/HACS-Default-orange?style=flat-square)
-![HACS Downloads](https://img.shields.io/github/downloads/Piotras1/piotras-value-bar/piotras-value-bar-loader.js?logo=homeassistant&color=41BDF5&displayAssetName=false)
-![GitHub Stars](https://img.shields.io/github/stars/Piotras1/piotras-value-bar?style=flat-square&logo=github&label=stars&color=brightgreen)
-![GitHub Issues](https://img.shields.io/github/issues/Piotras1/piotras-value-bar?style=flat-square&logo=github&label=issues)
+![HACS Default](https://img.shields.io/badge/HACS-Default-orange?style=flat-square&logo=homeassistant)
+[![HACS Downloads](https://img.shields.io/github/downloads/Piotras1/piotras-value-bar/total?style=flat-square&logo=homeassistant&color=41BDF5&label=downloads)](https://github.com/Piotras1/piotras-value-bar/releases)
+[![GitHub Stars](https://img.shields.io/github/stars/Piotras1/piotras-value-bar?style=flat-square&logo=github&label=stars&color=brightgreen)](https://github.com/Piotras1/piotras-value-bar/stargazers)
+[![GitHub Issues](https://img.shields.io/github/issues/Piotras1/piotras-value-bar?style=flat-square&logo=github&label=issues)](https://github.com/Piotras1/piotras-value-bar/issues)
 [![GitHub Release](https://img.shields.io/github/v/release/Piotras1/piotras-value-bar?style=flat-square&logo=github&label=released)](https://github.com/Piotras1/piotras-value-bar/releases)
-![GitHub Release Date](https://img.shields.io/github/release-date/Piotras1/piotras-value-bar?style=flat-square&logo=github&label=released)
+[![GitHub Release Date](https://img.shields.io/github/release-date/Piotras1/piotras-value-bar?style=flat-square&logo=github&label=released)](https://github.com/Piotras1/piotras-value-bar/releases)
 
-[![GitHub Discussions](https://img.shields.io/badge/Discussions-Join%20the%20community-blueviolet?style=flat-square&logo=github)](https://github.com/Piotras1/piotras-value-bar/discussions)
-![GitHub Discussions](https://img.shields.io/github/discussions/Piotras1/piotras-value-bar?style=flat-square&logo=github&label=discussions&color=blueviolet)
+[![Discussions](https://img.shields.io/badge/Discussions-Join%20the%20community-blueviolet?style=flat-square&logo=github)](https://github.com/Piotras1/piotras-value-bar/discussions)
+[![GitHub Discussions](https://img.shields.io/github/discussions/Piotras1/piotras-value-bar?style=flat-square&logo=github&label=discussions&color=blueviolet)](https://github.com/Piotras1/piotras-value-bar/discussions)
 
 [![Kiosk](https://img.shields.io/badge/My%20Kiosk-View%20All%20Cards-orange?style=flat-square&logo=github)](https://github.com/Piotras1/piotras-cards-pack)
 # Piotras Value Bar
