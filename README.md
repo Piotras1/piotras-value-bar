@@ -512,6 +512,7 @@ devices:
 | `max` | number or entity | `100` | Maximum value — maps to the right/top of the bar. Accepts a fixed number (e.g. `100`) or a HA entity ID (e.g. `sensor.power_total`) whose current state is used as the upper bound |
 | `unit` | string | `""` | Unit of measurement displayed next to the value |
 | `precision` | number | `0` | Number of decimal places for the displayed value |
+| `label_precision` | number | `0` | Number of decimal places for the current scale |
 | `colors` | string | `"1,2,3,4,5,6"` | Comma-separated palette indices mapped left→right across the bar. Repeat an index to widen a zone (e.g. `"1,2,3,4,5,5"`) |
 | `alarm_min` | number or entity | — | Lower alarm threshold. Arrow indicator appears when value drops below this. Accepts a fixed number or a HA entity ID whose current state is used as the threshold |
 | `alarm_max` | number or entity | — | Upper alarm threshold. Arrow indicator appears when value exceeds this. Accepts a fixed number or a HA entity ID whose current state is used as the threshold |
