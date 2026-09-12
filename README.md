@@ -31,6 +31,44 @@ Supports 3 bar orientations and 3 name/value layout modes — from compact singl
 
 ---
 
+## ⚙️ Installation
+
+<details>
+<summary><b>📦 Click here to view Installation Instructions (HACS & Manual)</b></summary>
+
+### Method 1: Via HACS Store (Recommended)
+1. Open HACS in Home Assistant
+2. Search for **"Piotras Value Bar"** in the store
+3. Click **Download**
+4. Hard reload your browser (`Ctrl+Shift+R`)
+
+### Method 2: Via HACS Link
+1. Click the button below:
+
+<a href="https://my.home-assistant.io/redirect/hacs_repository/?owner=Piotras1&repository=piotras-value-bar&category=plugin">
+    <img src="https://my.home-assistant.io/badges/hacs_repository.svg" alt="Open your Home Assistant instance">
+</a>
+
+2. Click **Add** → **Download**
+3. Hard reload your browser
+
+### Method 3: Manual Installation
+
+1. Download this repository as a ZIP file and extract it.
+2. Inside your Home Assistant `config/www/` directory, create a new folder named `piotras-value-bar`.
+3. Copy the compiled files (from `dist/` folder) into `config/www/piotras-value-bar/`.
+4. Go to **Settings → Dashboards → Resources**.
+5. Click **Add Resource** and enter:
+```
+/local/piotras-value-bar/piotras-value-bar-loader.js?v=1.2.3
+```
+- Resource type: **JavaScript Module**
+6. Hard reload your browser (`Ctrl+Shift+R`).
+  
+</details>
+
+---
+
 ## 🧩 Layout 1: Horizontal Bars — Stepped Gradient
 
 <img src="https://raw.githubusercontent.com/Piotras1/piotras-value-bar/refs/heads/main/img/piotras-value-bar-L1.jpg" alt="Piotras Value Bar - Layout 1 Preview">
@@ -345,7 +383,6 @@ devices:
 
 Energy counters (kWh) work best with **resetting counters** — daily or monthly. These are naturally bounded: they start at 0 at reset and grow throughout the period. Setting `max` to the previous period's value (yesterday / last month) gives immediate context — the pin shows whether today is ahead or behind the usual pace.
 
-> 📸 *[screenshot placeholder]*
 
 ```yaml
 type: custom:piotras-value-bar
@@ -439,40 +476,10 @@ Tips:
 
 ---
 
-## ⚙️ Installation
-
-### Method 1: Via HACS Store (Recommended)
-1. Open HACS in Home Assistant
-2. Search for **"Piotras Value Bar"** in the store
-3. Click **Download**
-4. Hard reload your browser (`Ctrl+Shift+R`)
-
-### Method 2: Via HACS Link
-1. Click the button below:
-
-<a href="https://my.home-assistant.io/redirect/hacs_repository/?owner=Piotras1&repository=piotras-value-bar&category=plugin">
-    <img src="https://my.home-assistant.io/badges/hacs_repository.svg" alt="Open your Home Assistant instance">
-</a>
-
-2. Click **Add** → **Download**
-3. Hard reload your browser
-
-### Method 3: Manual Installation
-
-1. Download this repository as a ZIP file and extract it.
-2. Inside your Home Assistant `config/www/` directory, create a new folder named `piotras-value-bar`.
-3. Copy the compiled files (from `dist/` folder) into `config/www/piotras-value-bar/`.
-4. Go to **Settings → Dashboards → Resources**.
-5. Click **Add Resource** and enter:
-```
-/local/piotras-value-bar/piotras-value-bar-loader.js?v=1.2.3
-```
-- Resource type: **JavaScript Module**
-6. Hard reload your browser (`Ctrl+Shift+R`).
-
----
-
 ## ⚙️ Configuration Reference
+
+<details>
+<summary><b>⚙️ Click here to view Configuration</b></summary>
 
 ### Card-level options
 
@@ -553,6 +560,8 @@ Tips:
 | `alarm_min` | number or entity | — | Lower alarm threshold. Arrow indicator appears when value drops below this. Accepts a fixed number or a HA entity ID whose current state is used as the threshold |
 | `alarm_max` | number or entity | — | Upper alarm threshold. Arrow indicator appears when value exceeds this. Accepts a fixed number or a HA entity ID whose current state is used as the threshold |
 | `tap_action` | object | `more-info` | Action on tap: `{action: "more-info"}` or `{action: "none"}` |
+
+</details>
 
 ---
 *Created by Piotras. Strictly engineered for reliability.*
