@@ -12,7 +12,7 @@
 # Piotras Value Bar
 ### Release v1.2.3
 
-<img width="1200" height="799" alt="piotras-value-bar" src="https://github.com/user-attachments/assets/5acbe05d-df33-41bb-bdb2-bf1368efcdad" />
+<img src="https://raw.githubusercontent.com/Piotras1/piotras-value-bar/refs/heads/main/img/piotras-value-bar.jpg" alt="Piotras Value Bar - Preview">
 
 A highly customizable Home Assistant card for displaying sensor values as animated bars with color gradients, scale labels, and alarm indicators.  
 Designed with a modern UI, smooth scaling, and a built-in visual editor.
@@ -33,7 +33,7 @@ Supports 3 bar orientations and 3 name/value layout modes — from compact singl
 
 ## 🧩 Layout 1: Horizontal Bars — Stepped Gradient
 
-![Zrzut ekranu (986)](https://github.com/user-attachments/assets/bb0088da-ca4e-4dad-9058-c94558f43362)
+<img src="https://raw.githubusercontent.com/Piotras1/piotras-value-bar/refs/heads/main/img/piotras-value-bar-L1.jpg" alt="Piotras Value Bar - Layout 1 Preview">
 
 > 📸 *Left: card_layout 1 — Name | Bar | Value. Center: card_layout 2 — Name+Value above bar. Right: card_layout 3 — Value inside bar.*
 
@@ -70,14 +70,14 @@ devices:
     min: 0
     max: 100
     unit: "%"
-    colors: "1,2,3,4,5,5"
+    colors: 1,2,3,4,5,5
 ```
 
 ---
 
 ## 🧩 Layout 2: Horizontal Bars — Smooth Gradient
 
-![Zrzut ekranu (987)](https://github.com/user-attachments/assets/e646870d-1484-4ba1-bcff-971297f7a5de)
+<img src="https://raw.githubusercontent.com/Piotras1/piotras-value-bar/refs/heads/main/img/piotras-value-bar-L2.jpg" alt="Piotras Value Bar - Layout 2 Preview">
 
 > 📸 *Left: card_layout 1 — Name | Bar | Value. Center: card_layout 2 — Name+Value above bar. Right: card_layout 3 — Value inside bar.*
 
@@ -115,14 +115,14 @@ devices:
     min: 0
     max: 40
     unit: "°C"
-    colors: "6,1,3,4,5"
+    colors: 6,1,3,4,5
 ```
 
 ---
 
 ## 🧩 Layout 3: Vertical Bars
 
-![Zrzut ekranu (988)](https://github.com/user-attachments/assets/22f83a42-d044-4b07-8053-7172cabdc2ee)
+<img src="https://raw.githubusercontent.com/Piotras1/piotras-value-bar/refs/heads/main/img/piotras-value-bar-L3.jpg" alt="Piotras Value Bar - Layout 3 Preview">
 
 > 📸 *Left: card_layout 1 — value and name centered below each bar. Right: card_layout 2 — values and names alternating above/below (staggered).*
 
@@ -171,20 +171,20 @@ devices:
     min: 0
     max: 100
     unit: "%"
-    colors: "5,5,4,3,2,1"
+    colors: 5,5,4,3,2,1
   - entity: sensor.temperature
     name: "Temp"
     min: 0
     max: 40
     unit: "°C"
-    colors: "6,1,3,4,5"
+    colors: 6,1,3,4,5
 ```
 
 ---
 
 ## 🔔 Alarm Indicators
 
-![Zrzut ekranu (989)](https://github.com/user-attachments/assets/f1c326d7-54b9-4516-8812-c99d37703b5e)
+<img src="https://raw.githubusercontent.com/Piotras1/piotras-value-bar/refs/heads/main/img/piotras-value-bar-alarm.jpg" alt="Piotras Value Bar - Alarm Indicators Preview">
 
 > 📸 *Left: alarm arrows on horizontal bars (▼ below min, ▲ above max). Right: alarm arrows on vertical bars (▶ left side for min, ◀ right side for max).*
 
@@ -205,7 +205,7 @@ devices:
 
 ## ⚡ Dynamic `max` — Entity as Scale Reference
 
-![Zrzut ekranu (1265)](https://github.com/user-attachments/assets/1b042909-d8a8-4c0b-b7e5-a2ec1e9954e6)
+<img src="https://raw.githubusercontent.com/Piotras1/piotras-value-bar/refs/heads/main/img/piotras-value-bar-dynamic.jpg" alt="Piotras Value Bar - Dynamic max Preview">
  
 The `max` field in each device accepts either a fixed number or a live Home Assistant entity ID.  
 When an entity ID is provided, its current state is read as the upper bound of the bar — updating automatically whenever the entity changes.
@@ -249,15 +249,13 @@ devices:
 
 ## ⚡ Energy Monitoring — Watts, Amps & kWh
 
-![Zrzut ekranu (1257)](https://github.com/user-attachments/assets/5cf01aa8-5bce-4498-a883-41a28216f59b)
+<img src="https://raw.githubusercontent.com/Piotras1/piotras-value-bar/refs/heads/main/img/piotras-value-bar-energy.jpg" alt="Piotras Value Bar - Energy Monitoring Preview">
 
 Piotras Value Bar works exceptionally well as an energy monitoring dashboard. The combination of dynamic `max`, color gradients, and the `show_indicator` pin gives immediate visual feedback on power consumption without any extra helper sensors.
 
 ### Watts (W) — Real-time power
 
 Use layout 1 or 2 with `show_indicator: true` and set `max` to the total consumption entity. Each device bar shows its proportion of the current load — the pin position tells you at a glance whether a device is running light or heavy.
-
-> 📸 *[screenshot placeholder]*
 
 ```yaml
 type: custom:piotras-value-bar
@@ -274,25 +272,25 @@ devices:
     min: 0
     max: 5500
     unit: "W"
-    colors: "1,2,3,4,5,5"
+    colors: 1,2,3,4,5,5
   - entity: sensor.power_office
     name: "Office PC"
     min: 0
     max: sensor.power_total
     unit: "W"
-    colors: "1,2,3,4,5,5"
+    colors: 1,2,3,4,5,5
   - entity: sensor.power_tv
     name: "TV"
     min: 0
     max: sensor.power_total
     unit: "W"
-    colors: "1,2,3,4,5,5"
+    colors: 1,2,3,4,5,5
   - entity: sensor.power_fridge
     name: "Fridge"
     min: 0
     max: sensor.power_total
     unit: "W"
-    colors: "1,2,3,4,5,5"
+    colors: 1,2,3,4,5,5
 ```
 
 **Tips:**
@@ -319,20 +317,20 @@ devices:
     min: 0
     max: 16
     unit: "A"
-    colors: "1,2,3,4,5,5"
+    colors: 1,2,3,4,5,5
     alarm_max: 14
   - entity: sensor.current_office
     name: "Office"
     min: 0
     max: sensor.current_total
     unit: "A"
-    colors: "1,2,3,4,5,5"
+    colors: 1,2,3,4,5,5
   - entity: sensor.current_boiler
     name: "Boiler"
     min: 0
     max: sensor.current_total
     unit: "A"
-    colors: "1,2,3,4,5,5"
+    colors: 1,2,3,4,5,5
 ```
 
 **Tips:**
@@ -343,7 +341,7 @@ devices:
 
 ### kWh — Daily & Monthly Energy
 
-![Zrzut ekranu (1258)](https://github.com/user-attachments/assets/532accac-4a79-46ad-9149-2a1a4d230b10)
+<img src="https://raw.githubusercontent.com/Piotras1/piotras-value-bar/refs/heads/main/img/piotras-value-bar-kwh.jpg" alt="Piotras Value Bar - kWh — Daily & Monthly Energy Preview">
 
 Energy counters (kWh) work best with **resetting counters** — daily or monthly. These are naturally bounded: they start at 0 at reset and grow throughout the period. Setting `max` to the previous period's value (yesterday / last month) gives immediate context — the pin shows whether today is ahead or behind the usual pace.
 
@@ -365,21 +363,21 @@ devices:
     max: sensor.energy_total_yesterday
     unit: "kWh"
     precision: 2
-    colors: "1,2,3,4,5,5"
+    colors: 1,2,3,4,5,5
   - entity: sensor.energy_office_today
     name: "Office PC"
     min: 0
     max: sensor.energy_office_yesterday
     unit: "kWh"
     precision: 2
-    colors: "1,2,3,4,5,5"
+    colors: 1,2,3,4,5,5
   - entity: sensor.energy_fridge_today
     name: "Fridge"
     min: 0
     max: sensor.energy_fridge_yesterday
     unit: "kWh"
     precision: 2
-    colors: "1,2,3,4,5,5"
+    colors: 1,2,3,4,5,5
 ```
 
 **Monthly budget example** — set `max` to a fixed budget or a monthly target entity:
@@ -391,7 +389,7 @@ devices:
     max: 300          # fixed monthly budget in kWh
     unit: "kWh"
     precision: 1
-    colors: "1,2,3,4,5,5"
+    colors: 1,2,3,4,5,5
     alarm_max: 270    # warn at 90% of budget
 ```
 
@@ -400,6 +398,44 @@ devices:
 - Daily counters reset at midnight — `show_indicator: true` makes the empty bar at midnight look clean (full gradient visible, pin at zero)
 - `show_indicator: false` is better for monthly view — you see how much of the bar is filled over time
 - Combine layout 3 (vertical bars) for a side-by-side comparison of all devices at a glance
+
+---
+
+## 🐠 Aquarium & Water Parameters — pH & Water Quality
+
+<img src="https://raw.githubusercontent.com/Piotras1/piotras-value-bar/refs/heads/main/img/piotras-value-bar-aqarium.jpg" alt="Piotras Value Bar - Aquarium & Water Parameters Preview">
+
+**Piotras Value Bar works exceptionally well as an aquarium and water quality monitoring dashboard. Thanks to narrow scales (e.g. min: 6, max: 9) and detailed scale ticks, even a subtle shift of 0.1 pH is immediately noticeable, enabling instant intervention.**
+
+pH Monitoring — Precise water balance
+
+Use layout 1 or 2 with show_indicator: true to track your pH level with high precision. The vibrant gradient scale provides immediate visual feedback on whether your water parameter is acidic, neutral, or alkaline.
+
+```yaml
+type: custom:piotras-value-bar
+header: "AQUARIUM"
+layout: 2
+card_layout: 1
+bar_height: 14
+show_indicator: true
+show_label: true
+label_font_size: 9
+devices:
+  - entity: sensor.aquarium_ph
+    name: "Test pH"
+    min: 6
+    max: 9
+    unit: "pH"
+    precision: 2
+    label_precision: 1
+    colors: 3,2,1,8,6,11
+```
+
+Tips:
+
+- For tight ranges (e.g., 2–5 units wide like 6 to 9), set label_precision: 1 — this expands the scale labels to decimal values (6.0, 6.4, 6.8...) for much clearer reading
+- Keep precision: 2 on the main value display for exact measurement accuracy while using label_precision: 1 for the scale ticks below
+- Customize the colors array to match standard drop test color charts used in aquaristics
 
 ---
 
